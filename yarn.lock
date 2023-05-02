@@ -1080,10 +1080,10 @@
   "resolved" "https://registry.npmjs.org/nice-try/-/nice-try-1.0.5.tgz"
   "version" "1.0.5"
 
-"nodemailer@^5.1.1":
-  "integrity" "sha512-hKGCoeNdFL2W7S76J/Oucbw0/qRlfG815tENdhzcqTpSjKgAN91mFOqU2lQUflRRxFM7iZvCyaFcAR9noc/CqQ=="
-  "resolved" "https://registry.npmjs.org/nodemailer/-/nodemailer-5.1.1.tgz"
-  "version" "5.1.1"
+"nodemailer@^6.9.1":
+  "integrity" "sha512-qHw7dOiU5UKNnQpXktdgQ1d3OFgRAekuvbJLcdG5dnEo/GtcTHRYM7+UfJARdOFU9WUQO8OiIamgWPmiSFHYAA=="
+  "resolved" "https://registry.npmjs.org/nodemailer/-/nodemailer-6.9.1.tgz"
+  "version" "6.9.1"
 
 "normalize-package-data@^2.3.2":
   "integrity" "sha512-9jjUFbTPfEy3R/ad/2oNbKtW9Hgovl5O1FvFWKkKblNXoN/Oou6+9+KKohPK13Yc3/TyunyWhJp6gvRNR/PPAw=="
