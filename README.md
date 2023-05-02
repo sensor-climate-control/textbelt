@@ -49,9 +49,7 @@ Textbelt can be run as a standalone server with [Docker](https://docs.docker.com
   ```
   - You can use your own mail server, or use an email service like Gmail as the SMTP relay
   - If you're using Gmail, you have to set up an App Password:
-    1. Go to https://myaccount.google.com/security
-    2. Under "How you sign in to Google", click on "2-Step Verificiation"
-    3. Scroll down to the bottom and click "App passwords"
+    1. Go to https://security.google.com/settings/security/apppasswords
     4. Under "Select the app and device you want to generate the app password for.", select "Mail" as the app and "Other (custom name)" as the device. Enter an identifiable name. Then click Generate.
     5. Copy this app password and enter it into the `SMTP_PASS` field of `.env`
   - Using Gmail, `.env` would look like this:
