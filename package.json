@@ -5,6 +5,7 @@
     "url": "git@github.com:typpo/textbelt.git"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.17.3",
     "nodemailer": "^5.1.1"
   },
