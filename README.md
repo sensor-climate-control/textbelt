@@ -1,4 +1,5 @@
 ### TextBelt Open Source
+Forked from [typpo/textbelt](https://github.com/typpo/textbelt) (unmaintained)
 
 TextBelt Open Source is a REST API that sends outgoing SMS.  It uses a free mechanism for sending texts, different from the more reliable paid version available at https://textbelt.com.
 
@@ -14,15 +15,6 @@ $ curl -X POST http://my_textbelt_server/text \
 
 `number` and `message` parameters are required.
 
-If you are using the paid version at https://textbelt.com, run the following (more examples available on the homepage):
-
-```sh
-$ curl -X POST https://textbelt.com/text \
-   -d number=5551234567 \
-   -d "message=I sent this message for free with Textbelt" \
-   -d key=abcdef123456
-```
-
 ### Success and Failure
 Sample success:
 
@@ -37,6 +29,42 @@ Sample failure:
 ```json
 {"success":false,"message":"Exceeded quota for this phone number."}
 ```
+
+
+### Usage as a standalone server
+
+Textbelt can be run as a standalone server with [Docker](https://docs.docker.com/engine/install/). There is an example `compose.yml` file in this repo to use with [Docker Compose](https://docs.docker.com/compose/compose-file/). To run the standalone server:
+
+- Install [Docker](https://docs.docker.com/engine/install/)
+- (Optional) follow the docker [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/)
+- Clone this repo: `git clone git@github.com:sensor-climate-control/textbelt.git`
+- Move into the repo directory: `cd textbelt`
+- Create an file named `.env`, like this:
+  ```
+  SMTP_HOST="smtp.example.com"
+  SMTP_PORT="587"
+  SMTP_USER="admin@example.com"
+  SMTP_PASS="examplepassword"
+  SMTP_FROM="'Alerts' <alerts@example.com>"
+  ```
+  - You can use your own mail server, or use an email service like Gmail as the SMTP relay
+  - If you're using Gmail, you have to set up an App Password:
+    1. Go to https://myaccount.google.com/security
+    2. Under "How you sign in to Google", click on "2-Step Verificiation"
+    3. Scroll down to the bottom and click "App passwords"
+    4. Under "Select the app and device you want to generate the app password for.", select "Mail" as the app and "Other (custom name)" as the device. Enter an identifiable name. Then click Generate.
+    5. Copy this app password and enter it into the `SMTP_PASS` field of `.env`
+  - Using Gmail, `.env` would look like this:
+  ```
+  SMTP_HOST="smtp.gmail.com"
+  SMTP_PORT="587"
+  SMTP_USER="example@gmail.com"
+  SMTP_PASS="exampleapppassword"
+  SMTP_FROM="'Alerts' <example@gmail.com>"
+  ```
+- Start the docker containers: `docker compose up -d`
+- Done! The server should be listening at port 9099.
+
 
 ### Usage as a module
 
@@ -80,14 +108,6 @@ text.send('1119491234567', 'Bonjour!', 'intl', function(err) {
 ...
 });
 ```
-
-### Usage as a standalone server
-
-Textbelt can be run as a standalone server with: `node server/app.js`.  Be sure to install dependencies first with `npm install` and you've configured nodemailer in `lib/config.js`. This project also relies on redis. To install redis locally, please see the [redis documentation](http://redis.io/topics/quickstart). Before launching the app, ensure redis is running on port 6379 with `redis-server`.
-
-By default, the server listens on port 9090.
-
-Don't forget to set `fromAddress` in `lib/config.js` to the email address you want to send from.
 
 ### Canadian and International endpoints
 
